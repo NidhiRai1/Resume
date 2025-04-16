@@ -19,9 +19,29 @@ Flask - Flask handles one customer at a time — no async support by default
         Manual data validation (request.get_json() and if-else logic)
         You have to manually write docs or use Flask-RESTful plugins
 
-
-
-
 🔥 What is CUDA?
 CUDA stands for Compute Unified Device Architecture — it's a parallel computing platform developed by NVIDIA.
 👉 It allows you to run your code (especially heavy tasks like ML training) on a GPU instead of a CPU 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
