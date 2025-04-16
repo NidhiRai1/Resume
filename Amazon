@@ -1,0 +1,27 @@
+🏛️ PostgreSQL Architecture Overview
+1. Process Flow (Query Lifecycle)
+
+Client sends SQL query.
+Postmaster hands it to a backend process.
+Parser check the syntex and builds parse tree.
+Validator: Validates table names, column names, etc.
+Planner/Optimizer : builds optimal execution plan.
+Executor runs the plan.
+Results sent back to client.
+WAL + Buffer Manager ensure data is safely written.
+
+🏛️ Fast and FlaskAPI
+
+FastAPI - FastAPI supports concurrent requests using async — perfect for high-performance APIs.
+          Uses Pydantic to auto-validate and parse request data using Python type hints
+          Automatically generates Swagger UI and Redoc at /docs and /redoc
+Flask - Flask handles one customer at a time — no async support by default
+        Manual data validation (request.get_json() and if-else logic)
+        You have to manually write docs or use Flask-RESTful plugins
+
+
+
+
+🔥 What is CUDA?
+CUDA stands for Compute Unified Device Architecture — it's a parallel computing platform developed by NVIDIA.
+👉 It allows you to run your code (especially heavy tasks like ML training) on a GPU instead of a CPU 
