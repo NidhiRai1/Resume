@@ -1,0 +1,52 @@
+OLIST
+
+ALL the coloums 
+order_id	customer_id	order_status	order_purchase_timestamp	order_approved_at	order_delivered_carrier_date	order_delivered_customer_date	order_estimated_delivery_date	customer_unique_id	customer_zip_code_prefix	customer_city	customer_state	order_purchase_year	order_purchase_month	order_purchase_month_name	order_purchase_year_month	order_purchase_date	order_purchase_day	order_purchase_dayofweek	order_purchase_dayofweek_name	order_purchase_hour	order_purchase_time_da
+
+df_orders['order_purchase_dayofweek'] = df_orders['order_purchase_timestamp'].apply(lambda x: x.dayofweek)
+🔍 What it does:
+This line creates a new column in the df_orders DataFrame called order_purchase_dayofweek, and fills it with the day of the week (0 to 6) extracted from the order_purchase_timestamp column.
+
+sns.lineplot(data=df_orders['order_purchase_year_month'].value_counts().sort_index(), ax=ax1, 
+             color='darkslateblue', linewidth=2)
+
+df_orders['order_purchase_year_month']	A column that likely contains year+month like 2018-01, 2018-02, etc.
+.value_counts()	Counts how many orders happened in each month
+.sort_index()	Ensures months are in chronological order
+
+-> Folium
+📍 Step 1: Extract Geolocations
+lats = list(df_orders_items.query('order_purchase_year == 2018')['geolocation_lat'].dropna().values)[:30000]
+longs = list(df_orders_items.query('order_purchase_year == 2018')['geolocation_lng'].dropna().values)[:30000]
+✅ What it does:
+Filters the dataset for only 2018 orders
+Extracts latitude (geolocation_lat) and longitude (geolocation_lng) of the shipping addresses
+.dropna() removes any missing values
+[:30000] limits to the first 30,000 locations to avoid overloading the map
+
+🧵 Step 2: Zip Coordinates Together
+locations = list(zip(lats, longs))
+✅ What it does:
+Pairs each latitude with a corresponding longitude to create a list of (lat, long) tuples
+Each tuple represents a location point on the map
+
+🗺️ Step 3: Create Base Map
+map1 = folium.Map(location=[-15, -50], zoom_start=4.0)
+✅ What it does:
+Initializes a folium map centered roughly on Brazil
+[-15, -50] is a central point in Brazil (latitude, longitude)
+zoom_start=4.0 sets the initial zoom level (4 = country-wide view)
+
+📍 Step 4: Add Marker Cluster
+FastMarkerCluster(data=locations).add_to(map1)
+✅ What it does:
+Uses FastMarkerCluster to cluster large numbers of points efficiently
+Groups nearby points into clusters with numbers, and expands them as the user zooms in
+Improves performance and usability (compared to plotting all 30K points separately)
+
+📦 Final Step: Output the M
+map1 This simply displays the interactive map in your notebook.
+
+✅ Predictive modeliing 
+
+For Liner and Random Forest Regression - Target Value is Wait Time 
