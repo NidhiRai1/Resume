@@ -24,7 +24,26 @@ CUDA stands for Compute Unified Device Architecture — it's a parallel computin
 👉 It allows you to run your code (especially heavy tasks like ML training) on a GPU instead of a CPU 
 
 
+Query Termination
 
+🧩 How to Set Up SNS for This
+Step 1: Create an SNS Topic
+Go to AWS SNS Console
+Create a topic: query-terminated
+Note the ARN (e.g., arn:aws:sns:us-east-1:1234567890:query-terminated)
+
+Step 2: Subscribe to It
+Add email addresses of users who should be notified.
+They will receive a confirmation email.
+Once confirmed, they'll start receiving alerts.
+
+Step 3: Give Lambda Permission
+Attach a policy to Lambda allowing it to publish to that topic:
+{
+  "Effect": "Allow",
+  "Action": "sns:Publish",
+  "Resource": "arn:aws:sns:us-east-1:1234567890:query-terminated"
+}
 
 
 
