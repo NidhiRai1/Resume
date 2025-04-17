@@ -1,0 +1,18 @@
+🔹 Convolutional Neural Networks (CNNs)
+
+Hyperparameter | High Value → | Low Value → | Tip
+Conv Layers | Overfitting | Underfitting | Use 2–4 layers
+Filter Size | Generalize more, slower | Miss patterns | Use 3x3
+Pool Size | Underfitting | Overfitting | Use 2x2
+Batch Size | Overfitting | Regularization | Use 32 or 64
+Learning Rate | Fast but unstable | Stable but slow | Start with 0.001
+Dropout | Underfitting | Overfitting | Use 0.3–0.5
+Image Size | Better accuracy | Info loss | Use 128x128+ for complex data
+
+🔹 What is Downsampling?
+Downsampling is the process of reducing the resolution or dimensionality of input data — especially in images or time-series.
+In the context of CNNs, downsampling helps reduce:
+The number of parameters
+Computational cost
+Risk of overfitting
+Spatial size of the feature maps
