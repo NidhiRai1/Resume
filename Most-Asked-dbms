@@ -1,0 +1,96 @@
+
+🔹 What is Normalization? Why is it needed?
+Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.
+
+✅ Why is it needed?
+To eliminate data anomalies (insertion, update, deletion).
+To reduce duplicate data.
+
+✅ In 1NF if:
+All values in a column are atomic (indivisible).
+Each row is unique.
+
+🔸 2NF (Second Normal Form)
+Rule: 1NF + No partial dependency 
+fix - split the table
+
+🔸 3NF (Third Normal Form)
+Rule: 2NF + No transitive dependency 
+
+🔸 BCNF (Boyce-Codd Normal Form)
+Rule: Stronger version of 3NF.
+For every functional dependency X → Y, X should be a super key.
+📌 If a non-super key determines another attribute, it's not in BCNF.
+✅ If all functional dependencies are from a super key, it's in BCNF.
+
+🔍 Example:
+Suppose in a table, Course → Instructor but Course is not a super key → ❌ Not BCNF.
+We already separated that out in 3NF → ✅ So, it’s now also in BCNF.
+
+
+🔹 What is Denormalization? When is it used?
+Denormalization is the process of intentionally introducing redundancy into a database for performance optimization.
+✅ When to use:
+When read performance is more important than write consistency.
+When a database is heavily read-intensive.
+📌 Example: Instead of doing a JOIN across three tables to get StudentName and Instructor for a Course, you may just store everything in a single table to avoid joins.
+
+
+🔹 What is a Functional Dependency?
+A Functional Dependency (FD) is a relationship between two attributes, typically between a primary key and other attributes.
+✅ Example:
+StudentID → StudentName
+Means if StudentID is the same in two rows, StudentName must also be the same.
+
+
+🔹 CRUD Operations in SQL
+CRUD = Create, Read, Update, Delete
+
+✅ CREATE (INSERT)
+INSERT INTO employees (id, name, department)
+VALUES (101, 'Alice', 'HR');
+🔍 READ (SELECT)
+SELECT * FROM employees;
+✏️ UPDATE
+UPDATE employees
+SET department = 'Finance'
+WHERE id = 101;
+❌ DELETE
+DELETE FROM employees
+WHERE id = 101;
+
+
+✅ Nested SELECT (subqueries inside SELECT, FROM, or WHERE)
+
+SELECT name, salary
+FROM employees
+WHERE salary > (
+  SELECT AVG(salary) FROM employees
+);
+
+SELECT name,
+  (SELECT department_name FROM departments WHERE departments.id = employees.department_id) AS dept_name
+FROM employees;
+
+
+🔹 What is a Transaction in DBMS?
+A transaction is a sequence of operations (like read, write, update) performed as a single logical unit of work.
+✅ Either all operations succeed (commit) or none (rollback).
+💡 Example: Transferring money from A to B:
+Debit from A
+Credit to B
+If one fails, the other must not proceed → Atomicity
+
+
+🔹 ACID Properties
+These are key properties that every transaction must satisfy:
+Property | Description
+🔹 A - Atomicity | All operations in a transaction are completed or none are.
+🔹 C - Consistency | Transaction must maintain database rules/integrity before and after.
+🔹 I - Isolation | Transactions occur independently, without affecting each other.
+🔹 D - Durability | Once committed, changes persist even after a crash.
+
+
+
+
+
