@@ -1,0 +1,14 @@
+
+
+With large NN we can increase the performance with large amount of data 
+activation fucntion from sigmoid to relu 
+
+🔷 What is a Feed Forward Neural Network (FNN)?
+An FNN is a type of neural network where the data flows in one direction — from input to output — without cycles or loops. That means there are no backward connections or feedback.
+
+good for regression or multi calssicfication data 
+--Limitation :
+not good for sequential or text data like time series data 
+
+Parameters - w, b
+HyperParameter - alpha , hideen layer(L), activation function , hidden units n1..., 
