@@ -1,4 +1,27 @@
 
+Feature / DB | PostgreSQL 🐘 | MySQL 🐬 | MongoDB 🍃
+Type | Relational (SQL) | Relational (SQL) | Non-relational (NoSQL - Document)
+Data Format | Tables (rows/columns) | Tables | JSON-like Documents (BSON)
+Schema | Strict schema | Strict schema | Flexible, schema-less
+ACID Compliance | Fully ACID-compliant | ACID (InnoDB engine) | Not fully ACID by default (has transactions since v4.0)
+Best Use Cases | Complex apps, data analytics, GIS, financial systems | Web apps, CMS, basic transactional apps | High-volume, schema-less, real-time apps
+Query Language | SQL + advanced features (window fx, CTEs) | SQL | Mongo Query Language (MQL – JSON style)
+Joins Support | Full support | Full support | Limited (manual joins or $lookup)
+Scaling | Vertical, some horizontal | Vertical, with some sharding tools | Built for horizontal scaling (sharding, replica sets)
+Transactions | Fully supported | Supported (InnoDB only) | Multi-doc transactions since v4.0
+Indexing | Advanced (GIN, GiST, B-tree, etc.) | B-tree, hash, spatial | B-tree, text search, geo-indexing
+Performance | Great for read/write balance | Faster reads, simpler workloads | Great for high write throughput
+Open Source | ✅ | ✅ | ✅ (with Enterprise options)
+
+
+
+
+
+
+
+
+
+
 🔹 What is Normalization? Why is it needed?
 Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.
 
