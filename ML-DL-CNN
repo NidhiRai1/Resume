@@ -16,3 +16,91 @@ The number of parameters
 Computational cost
 Risk of overfitting
 Spatial size of the feature maps
+
+📌 What is Edge Detection?
+Edges are the boundaries between different regions in an image — they typically represent object boundaries, texture changes, or illumination changes. Edge detection highlights these transitions.
+It helps in:
+Object detection
+Image segmentation
+Shape analysis
+Scene understanding
+
+🧠 Core Concepts
+1. Gradient
+The idea is to measure how pixel values change in the x (horizontal) and y (vertical) directions. If there's a big change, it's likely an edge.
+Gradient Magnitude: Strength of edge
+Gradient Direction: Angle of the edge
+
+🔧 Common Edge Detection Algorithms
+1. Sobel Operator
+Uses two 3x3 kernels to calculate horizontal and vertical changes.
+Good for finding edges in noisy images.
+
+2. Laplacian
+Uses second-order derivatives (change of gradient).
+Highlights areas of rapid intensity change.
+
+3. Canny Edge Detector (Most Popular!)
+A multi-stage edge detector:
+Noise Reduction (Gaussian Blur)
+Gradient Calculation (Sobel)
+Non-Max Suppression
+Double Threshold + Hysteresis
+
+📌 What is Padding?
+Padding refers to adding extra pixels around the border of an image or feature map. These added pixels usually have a value of zero (zero-padding), but can also be replicated or mirrored.
+🧠 Why is Padding Used?
+🔹 1. Preserve Spatial Dimensions
+Without padding, convolutions reduce the image size.
+Padding helps maintain the original size after applying filters.
+
+🔹 2. Better Edge Detection
+Convolutional filters need context from neighboring pixels.
+Padding allows filters to process edge pixels too.
+
+📏 Types of Padding
+Type | Description | Output Size
+valid | No padding | Smaller
+same | Zero padding to keep size | Same
+custom | Manually control padding values | Your choice
+
+✅ 1. Strided Convolution
+A stride defines how much you "slide" the convolution filter across the image at each step.
+⚙️ Default (Stride = 1):
+The filter moves 1 pixel at a time, horizontally and vertically. if 2 then move 2 pixel at a time 
+🔍 Example:
+If input = 7×7, filter = 3×3, stride = 2, no padding:
+Output size=⌊ (7−3)/2+1⌋=3×3
+
+🧱 Basic CNN Block
+A typical CNN layer has this structure:
+filters are used to extract the feature
+
+[INPUT IMAGE] → [CONVOLUTION] → [ReLU] → [POOLING]
+🤖 Intuition
+Conv Layer: Learns features
+ReLU: Non-linearity
+Pooling: Downsamples to reduce size + overfitting
+Dense: Final classification (e.g., digits, animals, objects)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
