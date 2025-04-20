@@ -90,6 +90,113 @@ Property | Description
 🔹 I - Isolation | Transactions occur independently, without affecting each other.
 🔹 D - Durability | Once committed, changes persist even after a crash.
 
+🔹 What are Locks in DBMS?
+Locks restrict access to data by other transactions to maintain isolation.
+🔒 Types of Locks:
+Type | Description
+Shared Lock (S) | For reading. Many can read together.
+Exclusive Lock (X) | For writing. Only one can write; no other can read/write.
+Binary Locks | Either locked or unlocked (0 or 1).
+Intention Locks | Used in hierarchical locking (e.g., IS, IX, SIX).
+Read-Write Locks | Fine-grained control (multiple readers, one writer).
+
+🔹 What is a Deadlock?
+A deadlock occurs when two or more transactions are waiting on each other’s resources and can’t proceed.
+
+🔹 What are Indexes and Types of Indexing?
+An index is a data structure (like a map or pointer) that speeds up data retrieval in a table.
+Type | Description
+Single-level Index | One index per data file (like a book’s table of contents).
+Multi-level Index | Index on index for large datasets (hierarchical).
+Dense Index | Index entry for every record in the file.
+Sparse Index | Index entry for some records, with pointers to blocks.
+Clustered Index | Data stored in the same order as the index. One per table.
+Non-Clustered Index | Separate from actual data; can be many per table.
+Composite Index | Index built on multiple columns.
+Bitmap Index | Uses bitmaps for each distinct column value (great for categorical/low-cardinality data).
+
+🔹 What is Hashing in DBMS?
+Hashing uses a hash function to map keys to storage locations (buckets).
+Types of Hashing:
+Static Hashing: Fixed number of buckets
+Dynamic Hashing: Buckets grow/shrink as data changes (e.g., extendible or linear hashing)
+
+🔹 What are B-Trees and B+ Trees?
+These are balanced tree structures used for indexing in databases.
+🌳 B-Trees:
+All keys are stored in internal and leaf nodes
+🌳 B+ Trees (enhanced B-Tree):
+Only leaf nodes store actual data/records
+
+📌 Attributes:
+Properties that describe an entity.
+Type | Example
+Simple | Name, Age
+Composite | Name → (First, Last)
+Derived | Age (derived from DOB)
+Multivalued | Phone Numbers (can be multiple)
+Key Attribute | Uniquely identifies entity (e.g., RollNo)
+
+🔹 What is a Relationship Set?
+A relationship defines how two or more entities are related.
+📌 Types of Relationships:
+One-to-One (1:1)
+One-to-Many (1:N)
+Many-to-One (N:1)
+Many-to-Many (M:N)
+
+🔹 How to Convert an ER Diagram to Relational Schema?
+Here’s a step-by-step guide to mapping ER components into tables:
+
+✅ 1. When Normalization Hurts Performance
+🔸 Highly normalized schemas may lead to:
+Too many JOINs across small tables
+Increased query complexity
+Slower response time in read-heavy systems
+
+
+✅ 3. Ensuring Data Consistency in Multi-User Environments
+Techniques:
+
+Use transactions (BEGIN, COMMIT, ROLLBACK)
+Implement locking mechanisms (row-level, table-level)
+Use isolation levels (Read Committed, Serializable)
+Apply constraints (primary, foreign, unique, check)
+Implement optimistic/pessimistic concurrency control
+
+✅ 4. Common Performance Bottlenecks in Databases
+❌ Missing or misused indexes
+❌ Poor query design (SELECT *, nested subqueries)
+❌ Lack of normalization (data duplication, inconsistency)
+❌ High lock contention in concurrent environments
+❌ Too many joins or unoptimized joins
+❌ Excessive I/O or memory usage
+❌ Not archiving old data (huge tables)
+
+✅ 2. How to Optimize SQL Queries
+Use indexes wisely
+Avoid SELECT *
+Use EXISTS instead of IN for subqueries
+Use JOINs instead of nested SELECTs when possible
+Normalize with care (balance performance vs integrity)
+Analyze execution plans (EXPLAIN, ANALYZE)
+Keep statistics and indexes up to date
+
+✅ 6. Clustered vs Non-Clustered Indexes
+Feature | Clustered Index | Non-Clustered Index
+Storage Order | Sorts and stores data rows in the table itself | Separate from data rows
+Number per Table | Only one allowed (as it defines row order) | Multiple can exist
+Access Speed | Faster for range queries | Slightly slower, as extra lookup needed
+Use Case | Primary key or frequently queried columns | Secondary columns, searching non-key data
+
+
+
+
+
+
+
+
+
 
 
 
