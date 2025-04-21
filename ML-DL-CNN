@@ -1,3 +1,9 @@
+Why use Conv layer - to extract all the feature like(edge, texture, etc)
+Function: The convolution operation slides a filter (kernel) over the image (or previous layer's output) and computes the dot product of the filter and the portion of the image it is covering.
+filter - extract specific feature at a time. 
+Pooling - It is commonly applied after a convolutional layer.
+Padding - Before convolution
+
 🚨 What is the Vanishing Gradient Problem?
 When training deep neural networks, during backpropagation, the gradients (used to update weights) can become very small as they travel backward through many layers.
 As a result:
@@ -170,13 +176,14 @@ The Inception module combines multiple types of filters in parallel, and concate
          Output
 
 
+Key Uses of 1x1 Convolutions
+Dimensionality Reduction (Channel Reduction):
 
+Transfer Learning - It is a machine learning technique where a pre-trained model is used on a new task. Instead of training a model from scratch,
 
-
-
-
-
-
+Data Augmentation is a technique used to artificially expand the size of a dataset by applying various transformations to the existing data. 
+Common Image Augmentation Techniques: Roation , flipping , traslation to x and y axis, noise injection, cutout 
+Common text Augmentation Techniques: Random inertion , random deletion , swap , 
 
 
 
