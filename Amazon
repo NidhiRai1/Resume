@@ -23,10 +23,12 @@ Flask - Flask handles one customer at a time — no async support by default
 CUDA stands for Compute Unified Device Architecture — it's a parallel computing platform developed by NVIDIA.
 👉 It allows you to run your code (especially heavy tasks like ML training) on a GPU instead of a CPU 
 
+Amazon Readshft - Storing and Handaling the Data and can be fetch by BI tools
+Advantages - Scalability , Performance, Costing is low , availability . security 
 
 Query Termination
 
-🧩 How to Set Up SNS for This
+🧩 How to Set Up SNS(simple notification services) for This
 Step 1: Create an SNS Topic
 Go to AWS SNS Console
 Create a topic: query-terminated
