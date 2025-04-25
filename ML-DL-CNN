@@ -186,6 +186,8 @@ Common Image Augmentation Techniques: Roation , flipping , traslation to x and y
 Common text Augmentation Techniques: Random inertion , random deletion , swap , 
 
 
+he key idea behind EfficientNet is to uniformly scale all dimensions of the network — width, depth, and resolution — in a principled way.  Traditional model scaling often focuses on scaling only one dimension, such as depth (number of layers) or width (number of channels). EfficientNet uses a "compound scaling" method that balances all three dimensions to achieve better performance.    
+
 
 
 
