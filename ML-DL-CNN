@@ -1,3 +1,29 @@
+
+With large NN we can increase the performance with large amount of data 
+activation fucntion from sigmoid to relu 
+
+🔷 What is a Feed Forward Neural Network (FNN)?
+An FNN is a type of neural network where the data flows in one direction — from input to output — without cycles or loops. That means there are no backward connections or feedback.
+
+good for regression or multi calssicfication data 
+--Limitation :
+not good for sequential or text data like time series data 
+
+Parameters - w, b
+HyperParameter - alpha , hideen layer(L), activation function , hidden units n1..., 
+
+🧠 What is Mini-Batch Gradient Descent?
+Gradient Descent (GD) is an optimization algorithm used to minimize loss. It comes in three main types:
+Type | Description | Pros | Cons
+Batch GD | Uses entire dataset to compute gradient | Stable updates | Slow, memory-intensive
+Stochastic GD (SGD) | Uses 1 sample at a time for gradient updates | Fast updates, low memory | Very noisy, can zigzag
+Mini-Batch GD | Uses small batch (e.g. 32, 64) at a time | Best of both worlds | Needs tuning of batch size
+
+🚀 What is RMSProp?
+It adapts the learning rate for each parameter individually, based on recent gradients — allowing faster and more stable convergence.
+Smoothens the gradient using a moving average.
+
+
 Why use Conv layer - to extract all the feature like(edge, texture, etc)
 Function: The convolution operation slides a filter (kernel) over the image (or previous layer's output) and computes the dot product of the filter and the portion of the image it is covering.
 filter - extract specific feature at a time. 
