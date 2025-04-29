@@ -1,27 +1,133 @@
 
+✅ 1. What is TensorFlow?
+TensorFlow is an open-source machine learning framework developed by Google that allows developers to build, train, and deploy deep learning and machine learning models.
+It supports both high-level APIs like Keras (for ease of use) and low-level APIs (for custom model building). TensorFlow uses tensors (multi-dimensional arrays) and computational graphs
 
-With large NN we can increase the performance with large amount of data 
-activation fucntion from sigmoid to relu 
+✅ 3. What is a computational graph? How does TensorFlow use it?
+A computational graph is a network of operations (nodes) and data (edges) where each node represents an operation (like addition, matrix multiplication) and edges represent tensors flowing between them.
 
-🔷 What is a Feed Forward Neural Network (FNN)?
-An FNN is a type of neural network where the data flows in one direction — from input to output — without cycles or loops. That means there are no backward connections or feedback.
+In TensorFlow 1.x, you build the graph first (define computation), then execute it in a session.
+In TensorFlow 2.x, eager execution is the default
 
-good for regression or multi calssicfication data 
---Limitation :
-not good for sequential or text data like time series data 
+✅ 5. What are placeholders and variables in TensorFlow (TF1.x)?
+Placeholder: A node in the graph that gets its value during runtime (via feed_dict). It’s like a placeholder for input data.
+Variable: A node that maintains state across sessions. Typically used for model parameters (weights and biases).
 
-Parameters - w, b
-HyperParameter - alpha , hideen layer(L), activation function , hidden units n1..., 
+✅ What is eager execution? How is it different from graph execution?
+| Aspect          | Eager Execution                          | Graph Execution            |
+|-----------------|-------------------------------------------|-----------------------------|
+| Nature          | Immediate execution                      | Delayed execution           |
+| Debugging       | Easier, Pythonic                         | Harder, more optimized      |
+| Example         | TF2.x default mode                      | TF1.x default mode          |
+| Optimization    | Less optimized                           | Highly optimized for deployment |
 
-🧠 What is Mini-Batch Gradient Descent?
-Gradient Descent (GD) is an optimization algorithm used to minimize loss. It comes in three main types:
-Type | Description | Pros | Cons
-Batch GD | Uses entire dataset to compute gradient | Stable updates | Slow, memory-intensive
-Stochastic GD (SGD) | Uses 1 sample at a time for gradient updates | Fast updates, low memory | Very noisy, can zigzag
-Mini-Batch GD | Uses small batch (e.g. 32, 64) at a time | Best of both worlds | Needs tuning of batch size
+✅ Explain the flow of training a model in TensorFlow.
+The typical flow:
+Prepare Data
+Load and preprocess data (using tf.data API, augmentations, normalization).
+Define Model
+Create a model (Sequential API, Functional API, or Subclassing tf.keras.Model).
+Compile Model
+Choose optimizer, loss function, and metrics using model.compile().
+Train Model
+Call model.fit() to train for several epochs.
+Evaluate Model
+Use model.evaluate() on validation/test data.
+Save Model
+Save the trained model using .save() for deployment.
 
-🚀 What is RMSProp?
-It adapts the learning rate for each parameter individually, based on recent gradients — allowing faster and more stable convergence.
-Smoothens the gradient using a moving average.
+✅ What happens during model.compile() and model.fit() in Keras?
+model.compile():
+Configures the model for training.
+Sets:
+Loss function (like binary_crossentropy). Optimizer (like Adam). Metrics to monitor (like accuracy).
+model.fit():
+Actually trains the model.
+Steps:
+Loops through dataset batches. Performs forward pass, loss calculation. Computes gradients via backpropagation. Updates weights using optimizer.
+
+✅ What is a TensorFlow session (tf.Session) in TF1.x? Is it needed in TF2.x?
+tf.Session (only in TensorFlow 1.x):
+Required to execute a computational graph.
+In TensorFlow 2.x:
+Sessions are NOT needed.  Eager execution allows you to run operations directly.
+
+✅ Write TensorFlow code to build a simple neural network.
+
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Build a simple model
+model = models.Sequential([
+    layers.Dense(64, activation='relu', input_shape=(32,)),  # Input layer
+    layers.Dense(64, activation='relu'),                     # Hidden layer
+    layers.Dense(10, activation='softmax')                   # Output layer for 10 classes
+])
+
+# Compile the model
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Summary
+model.summary()
+
+✅ How does TensorFlow optimize a model during training?
+TensorFlow uses automatic differentiation to compute gradients and updates model parameters using an optimizer (like Adam or SGD). The model minimizes a loss function by updating weights in the direction that reduces loss using gradient descent or its variants.
+
+✅ What optimizers are available in TensorFlow? Difference between Adam and SGD?
+Available optimizers: SGD , Adam, RMSprop, Adagrad, Adadelta, FTRL, Nadam
+Adam vs SGD:
+
+| Feature | Adam | SGD |
+|--------|------|-----|
+| Adaptive Learning Rate | Yes | No |
+| Momentum | Yes (built-in) | Optional |
+| Speed | Faster convergence | Slower but stable |
+| Use Case | Noisy, sparse data | Large, clean datasets |
+
+✅ How do you handle overfitting in TensorFlow models?
+Use Dropout layers.
+Apply L1/L2 regularization.
+Use EarlyStopping.
+Collect more data or augment data.
+Use simpler models or reduce epochs.
+Add Batch Normalization.
+
+✅ What would you do if your TensorFlow model is not converging?
+Check if learning rate is too high or low.
+Normalize input features.
+Try different architectures.
+Use a different optimizer.
+Add Batch Normalization or Dropout.
+Visualize gradients using TensorBoard.
+
+✅ What are common reasons for Out of Memory (OOM) errors in TensorFlow training?
+Batch size is too large.
+Model is too complex (too many layers/parameters).
+Using very high-resolution inputs.
+GPU memory fragmentation.
+
+What is PyTorch? How is it different from TensorFlow?
+PyTorch is an open-source deep learning framework developed by Facebook.
+It's known for its dynamic computation graph, Pythonic interface, and ease of debugging.
+Key differences:
+PyTorch: Dynamic graphs (define-by-run), easier to debug.
+TensorFlow 1.x: Static graphs (define-then-run). TF2.x added eager execution but PyTorch remains more intuitive for most developers.
+
+What are tensors in PyTorch? How are they different from NumPy arrays?
+Tensors are multi-dimensional arrays like NumPy arrays but can run on GPUs.
+Unlike NumPy arrays, PyTorch tensors support automatic differentiation for deep learning.
+
+What is autograd in PyTorch? How does it work?
+autograd is PyTorch's automatic differentiation engine.
+It tracks operations on tensors with requires_grad=True and builds a computation graph dynamically.
+Calling .backward() computes the gradients for all tensors in the graph.
+
+
+
+
+
+
 
 
