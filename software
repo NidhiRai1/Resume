@@ -1,0 +1,121 @@
+✅ React Fundamentals
+1. What are the key features of React?
+Component-based architecture
+Virtual DOM for efficient rendering
+JSX (JavaScript + XML syntax)
+Unidirectional data flow
+Hooks (from React 16.8+)
+
+2. What is JSX?
+JSX is a syntax extension that allows writing HTML-like code inside JavaScript. It’s syntactic sugar for React.createElement()
+
+3. What are components? Difference between class and functional components?
+Components are building blocks of a React UI.
+Class components: Use class, manage state with this.state, and lifecycle methods.
+Functional components: Use functions and Hooks (useState, useEffect) for state and lifecycle.
+
+4. What are props and state?
+Props: Immutable inputs passed to a component.
+State: Mutable data maintained inside a component, used for interactivity.
+
+5. What is the virtual DOM and how does React use it?
+Virtual DOM is a lightweight in-memory representation of the real DOM.
+React compares the virtual DOMs (diffing) and efficiently updates only changed elements in the actual DOM (reconciliation).
+
+6. What is the useEffect Hook and how does it work?
+useEffect is used for side effects like data fetching, subscriptions, etc.
+It runs after render and can return a cleanup function.
+
+useEffect(() => {
+  fetchData();
+  return () => cleanup();
+}, [dependency]);
+
+7. How does useState work internally?
+useState is a Hook that keeps state across renders using a state queue.
+On update, React queues a re-render and ensures the updated state is passed into the next render cycle.
+
+8. Difference between useCallback and useMemo?
+useCallback(fn, deps) → Memoizes a function
+useMemo(() => result, deps) → Memoizes a value
+Used to prevent unnecessary re-renders or recalculations.
+
+9. What is Context API? How is it different from Redux?
+Context API: Built-in method to share global state (e.g., theme, auth).
+Redux: External library, better for complex state and business logic with middleware, reducers, and action dispatching.
+Context is simpler, Redux is more scalable for large apps.
+
+11. How does React handle re-rendering?
+React re-renders components when:
+State or props change
+Parent re-renders React uses reconciliation with the virtual DOM to update only the necessary DOM nodes.
+
+12. What are React keys and why are they important?
+Keys uniquely identify list items to help React optimize rendering.
+Without keys, React may re-render unnecessarily or cause bugs in dynamic lists.
+
+14. What is code-splitting in React?
+Code-splitting loads only the necessary JavaScript chunks.
+Helps reduce initial bundle size, improving performance.
+
+15. What are higher-order components (HOC)?
+HOCs are functions that take a component and return a new component with added functionality.
+
+
+✅ JavaScript Interview Questions
+
+1. What is the event loop? Call stack and task queue?
+The event loop handles async operations:
+Call stack: Executes synchronous code.
+Task queue: Stores async callbacks (e.g., setTimeout).
+Event loop: Moves tasks from queue → stack when stack is empty.
+
+2. What is the prototype chain?
+JS objects inherit from other objects via the prototype chain. Enables inheritance and method sharing.
+
+3. Difference between null and undefined?
+undefined: Variable declared but not assigned.
+null: Explicitly set to represent "no value".
+
+4. Difference between var, let, and const?
+var: Function-scoped, hoisted.
+let: Block-scoped, reassignable.
+const: Block-scoped, not reassignable.
+
+✅ CSS Interview Questions
+
+1. Difference between relative, absolute, fixed, and sticky positioning?
+relative: Positions relative to itself.
+absolute: Relative to nearest positioned ancestor.
+fixed: Fixed to viewport.
+sticky: Switches from relative to fixed when scrolled.
+
+2. How do Flexbox and Grid differ?
+Flexbox: One-dimensional (row/column).
+Grid: Two-dimensional (rows + columns).
+
+3. Difference between visibility: hidden and display: none?
+hidden: Element is invisible but still occupies space.
+none: Element is removed from layout flow.
+
+4. How does z-index work?
+Controls stacking order. Higher z-index values appear on top. Only works on positioned elements.
+
+5. Pseudo-element vs. Pseudo-class?
+::before, ::after = pseudo-elements (style part of an element).
+:hover, :nth-child = pseudo-classes (style element based on state).
+
+✅ HTML Interview Questions
+
+1. What are semantic HTML elements? Why are they important?
+Semantic elements clearly describe their meaning: e.g., <article>, <nav>, <section>. They improve accessibility, SEO, and code readability.
+
+2. Difference between <div> and <section>?
+<div> is a generic container; <section> is semantic and represents a standalone block of content.
+
+3. Difference between <span> and <div>?
+<span> is inline; <div> is block-level. Use <span> for small inline changes, and <div> for layout structure.
+
+4. Difference between id and class?
+id: Unique, used once per page.
+class: Reusable, for styling or JS logic.
