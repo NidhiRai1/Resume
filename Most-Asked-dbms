@@ -36,9 +36,15 @@ Each row is unique.
 🔸 2NF (Second Normal Form)
 Rule: 1NF + No partial dependency 
 fix - split the table
+🎓 Real-Life Example:
+Consider this composite key table (StudentID + CourseID as Primary Key):
+❌ Problem: StudentName depends only on StudentID, not on the full key.
+convert this to   2NF by creating 3 table one for student detail , one for course details and other one for studentid and courseid 
 
 🔸 3NF (Third Normal Form)
 Rule: 2NF + No transitive dependency 
+❌ DeptName depends on DeptID, which depends on StudentID. This is a transitive dependency.
+create 2 table one for student+departid and other for department dt=etails 
 
 🔸 BCNF (Boyce-Codd Normal Form)
 Rule: Stronger version of 3NF.
