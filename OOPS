@@ -1,0 +1,20 @@
+
+1. What are the four pillars of OOP?
+Encapsulation: Hiding internal details of objects.
+Inheritance: Reusing code from existing classes.
+Polymorphism: Using a single interface to represent different types.
+Abstraction: Hiding complex logic and showing only essential features.
+
+3. Difference between a class and an object
+Class: A blueprint for creating objects (e.g., Car).
+Object: An instance of a class (e.g., myCar = Car()).
+
+4. What is encapsulation? Real-world example
+Encapsulation is the bundling of data and methods that operate on the data within one unit and restricting direct access to some of the object’s components.
+Example: A bank account class with private balance and public deposit/withdraw methods.
+
+6. What is polymorphism? Types?
+Polymorphism means "many forms"—the ability of a function/method to behave differently based on context.
+Compile-time polymorphism: Method Overloading
+Runtime polymorphism: Method Overriding
+
