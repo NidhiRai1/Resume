@@ -44,5 +44,36 @@ FROM sales;
 | 2024-01-01 | B       | 200    | 200          | 200          | 200          |
 | 2024-01-02 | B       | 180    | 380          | 180          | 200          |
 
+🔄 3. Value Comparison Functions
+
+SELECT 
+  date,
+  product,
+  amount,
+
+  LAG(amount) OVER (PARTITION BY product ORDER BY date) AS prev_amount,
+  LEAD(amount) OVER (PARTITION BY product ORDER BY date) AS next_amount,
+
+  FIRST_VALUE(amount) OVER (PARTITION BY product ORDER BY date) AS first_amount,
+  LAST_VALUE(amount) OVER (PARTITION BY product ORDER BY date ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS last_amount,
+
+  NTH_VALUE(amount, 2) OVER (PARTITION BY product ORDER BY amount ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS second_lowest_amount
+
+FROM sales;
+
+| date       | product | amount | prev\_amount | next\_amount | first\_amount | last\_amount | second\_lowest\_amount |
+| ---------- | ------- | ------ | ------------ | ------------ | ------------- | ------------ | ---------------------- |
+| 2024-01-01 | A       | 100    | NULL         | 150          | 100           | 200          | 150                    |
+| 2024-01-02 | A       | 150    | 100          | 200          | 100           | 200          | 150                    |
+| 2024-01-03 | A       | 200    | 150          | NULL         | 100           | 200          | 150                    |
+| 2024-01-01 | B       | 120    | NULL         | 80           | 120           | 160          | 120                    |
+| 2024-01-02 | B       | 80     | 120          | 160          | 120           | 160          | 120                    |
+| 2024-01-03 | B       | 160    | 80           | NULL         | 120           | 160          | 120                    |
+
+SELECT name, salary,
+  salary - LAG(salary) OVER (ORDER BY salary DESC) AS diff_from_prev
+FROM employees;
+
+
 
 
