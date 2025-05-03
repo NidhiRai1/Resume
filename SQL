@@ -1,0 +1,48 @@
+🔢 1. Ranking Functions
+
+SELECT name, salary,
+  ROW_NUMBER() OVER (ORDER BY salary DESC) AS row_num,
+  RANK() OVER (ORDER BY salary DESC) AS rnk,
+  DENSE_RANK() OVER (ORDER BY salary DESC) AS dense_rnk
+FROM employees;
+
+| name    | salary | row\_num | rnk | dense\_rnk |
+| ------- | ------ | -------- | --- | ---------- |
+| Bob     | 9000   | 1        | 1   | 1          |
+| Charlie | 9000   | 2        | 1   | 1          |
+| Alice   | 8000   | 3        | 3   | 2          |
+| David   | 7000   | 4        | 4   | 3          |
+| Emma    | 6000   | 5        | 5   | 4          |
+
+📈 2. Aggregate Window Functions
+
+SELECT date, amount,
+  MIN(amount) OVER (ORDER BY date) AS running_min,
+  MAX(amount) OVER (ORDER BY date) AS running_max
+FROM sales;
+
+| date       | amount | running\_min | running\_max |
+| ---------- | ------ | ------------ | ------------ |
+| 2024-01-01 | 100    | 100          | 100          |
+| 2024-01-02 | 150    | 100          | 150          |
+| 2024-01-03 | 200    | 100          | 200          |
+| 2024-01-04 | 50     | 50           | 200          |
+| 2024-01-05 | 300    | 50           | 300          |
+
+SELECT date, product, amount,
+  SUM(amount) OVER (PARTITION BY product ORDER BY date) AS running_sum,
+  MIN(amount) OVER (PARTITION BY product ORDER BY date) AS running_min,
+  MAX(amount) OVER (PARTITION BY product ORDER BY date) AS running_max
+FROM sales;
+
+
+| date       | product | amount | running\_sum | running\_min | running\_max |
+| ---------- | ------- | ------ | ------------ | ------------ | ------------ |
+| 2024-01-01 | A       | 100    | 100          | 100          | 100          |
+| 2024-01-02 | A       | 150    | 250          | 100          | 150          |
+| 2024-01-03 | A       | 50     | 300          | 50           | 150          |
+| 2024-01-01 | B       | 200    | 200          | 200          | 200          |
+| 2024-01-02 | B       | 180    | 380          | 180          | 200          |
+
+
+
