@@ -10,6 +10,30 @@ Executor runs the plan.
 Results sent back to client.
 WAL + Buffer Manager ensure data is safely written.
 
+SANDBOX CLAENING UTILITY :
+
+ETL Tool (e.g., Glue, Talend, Airflow)
+   |
+   |--> Loads Data into Table (DynamoDB, RDS, etc.)
+   |
+CloudWatch Event / EventBridge Trigger / Direct Trigger
+   |
+   ↓
+AWS Lambda
+   |
+   |--> Evaluate Conditions (e.g., check column value, anomalies, etc.)
+   |     |
+   |     |--> If condition met:
+   |           - Update one or more columns in the table
+   |           - Send Notification via SNS
+   |
+   ↓
+AWS SNS Topic
+   |
+   → Email (or SMS/Push) to Users
+
+
+
 🏛️ Fast and FlaskAPI
 
 FastAPI - FastAPI supports concurrent requests using async — perfect for high-performance APIs.
