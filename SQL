@@ -108,6 +108,43 @@ FROM products p
 LEFT JOIN orders o ON p.product_id = o.product_id AND o.order_date >= CURRENT_DATE - INTERVAL '30 days'
 WHERE o.product_id IS NULL;
 
+--LENGTH FUNCTION TO CALCULATE THE LENGTH OF THE TOTAL CHARCTER IN EACH ROW OF THE SPECIFIC COLOUM 
+# Write your MySQL query statement below
+select  tweet_id 
+from Tweets
+where length(content) > 15  
+
+
+case related question 
+
+SELECT
+    machine_id,
+    ROUND(AVG(end_time - start_time), 3) AS processing_time
+FROM (
+    SELECT
+        machine_id,
+        process_id,
+        MAX(CASE WHEN activity_type = 'end' THEN timestamp END) AS end_time,
+        MIN(CASE WHEN activity_type = 'start' THEN timestamp END) AS start_time
+    FROM Activity
+    GROUP BY machine_id, process_id
+) AS durations
+GROUP BY machine_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
