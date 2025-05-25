@@ -1,0 +1,53 @@
+
+Encoder - extract the context from the input text 
+decoder - perform text generation taxk 
+
+word and token embedding with limited context capability 
+
+RNN(Recurring nn) - it maintain the sequent of the words in senetence for the contextual understanding.
+word to vect. to create the embbeding which can access in one go by the encoder and then decoder use to generate the output 
+
+Limitation their is a single context embbeding make it difficult to deal wth longer sentences since it is a single embbedng that reqpresent the netire input 
+
+Solution called ATTENTion layer(give relavence context scooring + combine the relevent tokens ) - It allow to focus on the part of the input that are important . which words are more important in the sentence can be handle by them 
+words like water in english and pani in hindi has a higher attention weeight 
+
+by adding these attention layer the decoder RNN can genrate the potential ouput 
+
+--HOW LLM WORK 
+
+Transformer - hav eanttention layer without RNN na dare trainned parallelly 
+
+
+IN tarnsformer we are stackin up the blocks of encoder and decoder with strethening them 
+
+input - encoder - convertted to embedding with random values -> self attention layer -> that update thes embbeding into more contextual based embbeding -> Feed Forward layer - to create final tokenized word embedding 
+previouslly genrated words -> masked self attention(help to predict the next word remove all word form the above diaglonal) -> process and generated the embedding -> encoder attention -> along the encoder embedding and the rest by masked one pass to this -> ffnn -> this genarate the next word in the sequence  
+
+Limitation - don't do classification part 
+
+BERT - 
+
+Input + CLS (Classification ttoken) - mask words rondomallyy from the input sequence and have the mdel predecte these words - pre trainned - fine tunning 
+
+GPT-
+input + randomally intinalozed embedding - transfprmer decoder - generate the next words
+
+COTEXT LENGTH - Input sequence + preveouslly generated token can be the current context length 
+their is the limitation of the token length
+
+generation of words or token us done one by one 
+parallized 
+
+TRANSFORMER ARCHITUCTURE -
+
+Tokenizer - embedding vectors - transformer block (self attention layer + feed forward NN) 
+self ATTENTION LAYER(give relavence context scooring + combine the relevent tokens ) - KRY PROJECTION MATRIX ARE KEY + QUERY + VALUE --- GENERATE THE RELEVENCE SCORE BY MATRIX MULTIPLICATION
+
+
+
+
+
+
+
+
